@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expedify – AI in Marketing Course</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    h1, h2, h3 {
+      margin-bottom: 20px;
+      color: #222;
+    }
+    p {
+      margin-bottom: 15px;
+    }
+    /* Section Padding */
+    section {
+      padding: 5rem 2rem;
+    }
+    /* Ensure all sections (except Hero) take full viewport height */
+    section:not(#hero) {
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    /* Primary Color */
+    :root {
+      --primary-color: #EF785B;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    nav .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      letter-spacing: -0.5px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    nav ul li a {
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover {
+      color: var(--primary-color);
+    }
+    /* Dropdown Styles (CSS hover only) */
+    nav ul li.dropdown {
+      position: relative;
+    }
+    nav ul li.dropdown ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      list-style: none;
+      padding: 0.5rem 0;
+      margin: 0;
+      min-width: 180px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    nav ul li.dropdown:hover ul {
+      display: block;
+    }
+    nav ul li.dropdown ul li {
+      padding: 0.5rem 1rem;
+      white-space: nowrap;
+    }
+    nav ul li.dropdown ul li a {
+      color: #333;
+      font-weight: 500;
+      display: block;
+    }
+    nav ul li.dropdown ul li a:hover {
+      background: #f9f9f9;
+      color: var(--primary-color);
+    }
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+    }
+
+    /* Hero Section (Unchanged) */
+    #hero {
+      background: linear-gradient(135deg, #f9f9f9, #fff), url('https://source.unsplash.com/1600x900/?ai,marketing') no-repeat center/cover;
+      color: #333;
+    }
+    #hero .hero-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 4rem 0;
+      gap: 2rem;
+    }
+    #hero .hero-text {
+      flex: 1;
+      min-width: 300px;
+      padding: 20px;
+      text-align: center;
+    }
+    #hero .hero-text h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      line-height: 1.2;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
+    #hero .hero-text p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+    #hero .hero-text .cta-btn {
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    #hero .hero-text .cta-btn:hover {
+      background: #d96a50;
+    }
+    #hero .hero-form {
+      flex: 1;
+      min-width: 300px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      position: relative;
+      top: -20px;
+      transform: translateY(20px);
+    }
+    #hero .hero-form form {
+      display: flex;
+      flex-direction: column;
+    }
+    #hero .hero-form input {
+      padding: 1rem;
+      margin-bottom: 15px;
+      border: 2px solid #eee;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+    #hero .hero-form input:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 8px rgba(239, 120, 91, 0.1);
+    }
+    #hero .hero-form button {
+      padding: 15px;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    #hero .hero-form button:hover {
+      background: #d96a50;
+    }
+
+    /* Section Titles (used by Pricing, Admission, Refund, etc.) */
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2.2rem;
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--primary-color);
+    }
+
+    /* Grid & Card Layouts */
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+    .grid-4 {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #f0f0f0;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .card i {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary-color);
+    }
+
+    /* Accordion Styles (for Detailed Curriculum & FAQs) */
+    .accordion-item {
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+    }
+    .accordion-header {
+      padding: 15px;
+      cursor: pointer;
+      font-weight: 600;
+      position: relative;
+      background: #f7f7f7;
+      border-radius: 5px;
+    }
+    .accordion-header::after {
+      content: '+';
+      position: absolute;
+      right: 20px;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+    .accordion-item.active .accordion-header::after {
+      transform: rotate(45deg);
+    }
+    .accordion-content {
+      padding: 15px 20px;
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    .accordion-item.active .accordion-content {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Pricing Table (for Pricing section and for boxes) */
+    .pricing-table {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .pricing-plan {
+      flex: 1;
+      min-width: 250px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 2.5rem;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .pricing-plan:hover {
+      transform: translateY(-5px);
+    }
+    .pricing-plan::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--primary-color);
+    }
+    .pricing-plan h3 {
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+    }
+    .pricing-plan p {
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+    .pricing-plan .price {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin: 1.5rem 0;
+    }
+
+    /* Admission Process & Refund Policy Box Styles (using custom classes) */
+    .admission-grid, .policy-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .admission-card, .policy-card {
+      flex: 1;
+      min-width: 250px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+    .admission-card:hover, .policy-card:hover {
+      transform: translateY(-5px);
+    }
+    /* Style the headings inside these boxes in brand color */
+    .admission-card h3, .policy-card h3 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+
+    /* Timeline Section for Admission Process */
+    #admission-timeline {
+      background: #f9f9f9;
+      padding: 5rem 2rem;
+    }
+    .timeline {
+      position: relative;
+      margin: 40px 0;
+      padding: 0;
+    }
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      background: var(--primary-color);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1px;
+    }
+    .timeline-item {
+      padding: 20px 30px;
+      position: relative;
+      width: 50%;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .timeline-item.left {
+      left: 0;
+    }
+    .timeline-item.right {
+      left: 50%;
+    }
+    .timeline-content {
+      padding: 20px;
+      background: #fff;
+      position: relative;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .timeline-item.left::before,
+    .timeline-item.right::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+    .timeline-item.left::before {
+      right: -15px;
+      border-width: 10px 0 10px 15px;
+      border-color: transparent transparent transparent #fff;
+    }
+    .timeline-item.right::before {
+      left: -15px;
+      border-width: 10px 15px 10px 0;
+      border-color: transparent #fff transparent transparent;
+    }
+    .timeline-item.left .timeline-content {
+      margin-right: 30px;
+    }
+    .timeline-item.right .timeline-content {
+      margin-left: 30px;
+    }
+    @media screen and (max-width: 768px) {
+      .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        padding-left: 70px;
+        padding-right: 25px;
+        margin-bottom: 20px;
+      }
+      .timeline::after {
+        left: 30px;
+      }
+      .timeline-item::before {
+        left: 15px;
+        border-width: 7px 10px 7px 0;
+        border-color: transparent var(--primary-color) transparent transparent;
+      }
+    }
+
+    /* Detailed Curriculum Flip Card Styles */
+    .curriculum-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .flip-card {
+      background-color: transparent;
+      width: 100%;
+      max-width: 300px;
+      height: 350px;
+      perspective: 1000px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      padding: 20px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      background: #fff;
+      overflow-y: auto;
+    }
+    .flip-card-front {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .flip-card-front h4 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+    .flip-card-front p {
+      font-size: 1rem;
+      text-align: center;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+    .flip-card-back h4 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    /* Projects Section - New UI with Cards */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .project-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      border: 1px solid #f0f0f0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .project-card h4 {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+    .project-card p {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    /* Final CTA Form */
+    #final-cta .cta-form {
+      max-width: 500px;
+      margin: 30px auto 0;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    #final-cta .cta-form form {
+      display: flex;
+      flex-direction: column;
+    }
+    #final-cta .cta-form input {
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    #final-cta .cta-form button {
+      padding: 15px;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    #final-cta .cta-form button:hover {
+      background: #d96a50;
+    }
+
+    /* Table Styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 1rem 1.2rem;
+      text-align: left;
+    }
+    th {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 1.2rem;
+      font-weight: 600;
+    }
+    td {
+      background: #fff;
+    }
+    tr:nth-child(even) td {
+      background: #f9f9f9;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1024px) {
+      nav ul {
+        display: none;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      nav {
+        padding: 1rem;
+      }
+      #hero .hero-text h1 {
+        font-size: 2.2rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+    @media (max-width: 768px) {
+      #hero .hero-container {
+        flex-direction: column;
+      }
+      #hero .hero-form {
+        top: 0;
+        transform: none;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+    @media (max-width: 600px) {
+      /* Adjust flip cards for smaller screens */
+      .flip-card {
+        max-width: 100%;
+        height: 300px;
+      }
+    }
+
+    /* Chat Widget Styles */
+    .chat-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary-color);
+      color: #fff;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10000;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .chat-widget i {
+      font-size: 1.8rem;
+    }
+    .chat-popup {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 300px;
+      max-width: 90%;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      z-index: 10000;
+    }
+    .chat-popup.active {
+      display: block;
+    }
+    .chat-header {
+      background: var(--primary-color);
+      color: #fff;
+      padding: 10px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chat-header span {
+      font-size: 1.2rem;
+    }
+    .chat-header button {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .chat-body {
+      padding: 10px;
+    }
+    .chat-body form input,
+    .chat-body form textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .chat-body form button {
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header>
+    <nav class="container">
+      <div class="logo">Expedify</div>
+      <div class="menu-toggle">☰</div>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#overview">Overview</a></li>
+        <li class="dropdown">
+          <a href="#why-expedify">Why Expedify</a>
+          <ul class="dropdown-content">
+            <li><a href="#key-offerings">Key Offerings</a></li>
+            <li><a href="#brands">Our Brands</a></li>
+            <li><a href="#comparison">Comparison</a></li>
+            <li><a href="#specialization">Specialization</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#detailed-curriculum">Course Details</a>
+          <ul class="dropdown-content">
+            <li><a href="#detailed-curriculum">Detailed Curriculum</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#tools">Tools</a></li>
+          </ul>
+        </li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQs</a></li>
+        <li><a href="#final-cta">Apply</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Chat Widget -->
+  <div class="chat-widget" id="chatWidget">
+    <i class="fas fa-comments"></i>
+  </div>
+  <div class="chat-popup" id="chatPopup">
+    <div class="chat-header">
+      <span>Chat with us</span>
+      <button id="closeChat">&times;</button>
+    </div>
+    <div class="chat-body">
+      <form id="chatForm">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Page Sections -->
+
+  <!-- Hero Section (Unchanged) -->
+  <section id="hero">
+    <div class="container hero-container">
+      <div class="hero-text">
+        <h1>AI in Marketing – From Gen AI to Martech Execution</h1>
+        <p>Empower your marketing career with our 2-month immersive course for Indian marketers.</p>
+        <button class="cta-btn" onclick="location.href='#final-cta'">Enroll Now</button>
+      </div>
+      <div class="hero-form">
+        <form>
+          <input type="text" placeholder="Name" required />
+          <input type="email" placeholder="Email" required />
+          <input type="tel" placeholder="Phone" required />
+          <input type="url" placeholder="LinkedIn Profile (optional)" />
+          <button type="submit">Apply Now</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview Section -->
+  <section id="overview">
+    <div class="container">
+      <h2 class="section-title">What You Will Learn</h2>
+      <div class="grid grid-4">
+        <div class="card">
+          <i class="fas fa-check"></i>
+          <p>AI-powered content creation &amp; campaign automation</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-check"></i>
+          <p>AI-driven chatbots &amp; marketing automation</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-check"></i>
+          <p>AI-powered ad optimization &amp; analytics</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-check"></i>
+          <p>Hands-on training with Expedify's AI omnichannel tool</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Expedify Section -->
+  <section id="why-expedify">
+    <div class="container">
+      <h2 class="section-title">Why Expedify?</h2>
+      <div class="grid grid-4">
+        <div class="card">
+          <i class="fas fa-bullseye"></i>
+          <p><strong>100% Hands-On Learning</strong><br>Industry projects &amp; real AI marketing execution</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-bullhorn"></i>
+          <p><strong>Live Training</strong><br>No pre-recorded content – Learn from AI marketing experts</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-rocket"></i>
+          <p><strong>Expedify AI Tool Training</strong><br>Hands-on learning with real AI tools</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-trophy"></i>
+          <p><strong>Internship &amp; Career Support</strong><br>Portfolio development &amp; job referrals</p>
+        </div>
+      </div>
+      <p style="text-align: center; margin-top: 20px;">Our practical, AI-driven marketing approach sets us apart from traditional courses.</p>
+    </div>
+  </section>
+
+  <!-- Key Offerings Section -->
+  <section id="key-offerings">
+    <div class="container">
+      <h2 class="section-title">Key Offerings</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Offering</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>AI-Powered Marketing Training</td>
+            <td>Live, interactive sessions focused on real-world AI marketing execution.</td>
+          </tr>
+          <tr>
+            <td>100% Hands-On Practical Learning</td>
+            <td>No-code workflows, chatbots, and project-based learning to build real campaigns.</td>
+          </tr>
+          <tr>
+            <td>Live Industry Projects &amp; Case Studies</td>
+            <td>Work on AI-driven campaigns and real-life case studies.</td>
+          </tr>
+          <tr>
+            <td>Exclusive Tools &amp; Technologies</td>
+            <td>Training on Expedify’s proprietary AI tool, ChatGPT, Jasper, Copy.ai, and more.</td>
+          </tr>
+          <tr>
+            <td>Career Support &amp; Placement Assistance</td>
+            <td>Certification, resume building, and job placement support to launch your career.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Our Brands Section -->
+  <section id="brands">
+    <div class="container">
+      <h2 class="section-title">Our Trusted Brands</h2>
+      <div class="grid grid-4">
+        <div class="card"><img src="https://via.placeholder.com/150?text=Brand+1" alt="Brand 1 Logo"></div>
+        <div class="card"><img src="https://via.placeholder.com/150?text=Brand+2" alt="Brand 2 Logo"></div>
+        <div class="card"><img src="https://via.placeholder.com/150?text=Brand+3" alt="Brand 3 Logo"></div>
+        <div class="card"><img src="https://via.placeholder.com/150?text=Brand+4" alt="Brand 4 Logo"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section id="comparison">
+    <div class="container">
+      <h2 class="section-title">Expedify vs. Other Courses</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Expedify</th>
+            <th>Other Courses</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Training Mode</td>
+            <td>Live, interactive sessions</td>
+            <td>Pre-recorded/theory-based</td>
+          </tr>
+          <tr>
+            <td>Hands-on Projects</td>
+            <td>Real-world AI marketing projects</td>
+            <td>Limited practical exposure</td>
+          </tr>
+          <tr>
+            <td>Curriculum</td>
+            <td>AI-first, execution-focused</td>
+            <td>Generic, outdated content</td>
+          </tr>
+          <tr>
+            <td>Tool Training</td>
+            <td>Exclusive Expedify AI tool training</td>
+            <td>No dedicated tool training</td>
+          </tr>
+          <tr>
+            <td>Career Support</td>
+            <td>Resume, portfolio &amp; placement assistance</td>
+            <td>Minimal guidance</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Specialization Section -->
+  <section id="specialization">
+    <div class="container">
+      <h2 class="section-title">Specialization</h2>
+      <div class="grid grid-4">
+        <div class="card">
+          <h3>AI-Powered Omnichannel Marketing</h3>
+          <p>Seamlessly integrate and automate campaigns across platforms for optimized performance.</p>
+        </div>
+        <div class="card">
+          <h3>AI-Driven Performance Marketing</h3>
+          <p>Optimize ad spend and ROI with AI-powered insights and real-time analytics.</p>
+        </div>
+        <div class="card">
+          <h3>No-Code AI Workflows</h3>
+          <p>Automate marketing tasks with intuitive, code-free solutions.</p>
+        </div>
+        <div class="card">
+          <h3>AI-Powered Shopify &amp; E-Commerce Growth</h3>
+          <p>Boost conversions with AI-driven e-commerce automation and personalized experiences.</p>
+        </div>
+        <div class="card">
+          <h3>Customer Data &amp; Personalization</h3>
+          <p>Leverage unified data for hyper-personalized marketing strategies.</p>
+        </div>
+        <div class="card">
+          <h3>AI-Driven Analytics</h3>
+          <p>Turn marketing data into actionable insights with predictive modeling.</p>
+        </div>
+        <div class="card">
+          <h3>AI-Powered Brand Strategy</h3>
+          <p>Develop innovative, AI-first strategies to drive brand growth.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Curriculum Section (Flip Cards) -->
+  <section id="detailed-curriculum">
+    <div class="container">
+      <h2 class="section-title">Detailed Curriculum</h2>
+      <h3 style="text-align: center; margin-bottom: 1rem;">Month 1</h3>
+      <div class="curriculum-grid">
+        <!-- Week 1 Card -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Week 1</h4>
+              <p>Foundations of AI in Marketing</p>
+            </div>
+            <div class="flip-card-back">
+              <h4>Week 1: Foundations of AI</h4>
+              <ul>
+                <li><strong>Introduction:</strong> Evolution, trends, and applications</li>
+                <li><strong>Generative vs. Agentic:</strong> Capabilities &amp; limitations</li>
+                <li><strong>Ethics:</strong> Addressing bias &amp; data privacy</li>
+                <li><strong>Performance:</strong> How AI optimizes ROI</li>
+                <li><strong>Practical:</strong> Explore Expedify’s tools</li>
+                <li><strong>Project:</strong> Develop a content plan</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Week 2 Card -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Week 2</h4>
+              <p>Content &amp; Campaign Automation</p>
+            </div>
+            <div class="flip-card-back">
+              <h4>Week 2: Automation</h4>
+              <ul>
+                <li><strong>Social Media &amp; Blogs:</strong> Automate content creation</li>
+                <li><strong>Campaign Management:</strong> Scheduling &amp; engagement</li>
+                <li><strong>SEO &amp; Tracking:</strong> Enhance performance</li>
+                <li><strong>Email Campaigns:</strong> Automate engagement</li>
+                <li><strong>Practical:</strong> Implement AI workflows</li>
+                <li><strong>Project:</strong> Create an email strategy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Week 3 Card -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Week 3</h4>
+              <p>No-Code AI &amp; Automation</p>
+            </div>
+            <div class="flip-card-back">
+              <h4>Week 3: No-Code Automation</h4>
+              <ul>
+                <li><strong>Agentic AI:</strong> Autonomous workflows</li>
+                <li><strong>No-Code Workflows:</strong> Automate tasks</li>
+                <li><strong>Chatbots:</strong> Build AI-powered bots</li>
+                <li><strong>Customer Journeys:</strong> Personalize engagement</li>
+                <li><strong>Practical:</strong> Use Expedify’s chatbot integration</li>
+                <li><strong>Project:</strong> Develop a chatbot workflow</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Week 4 Card -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Week 4</h4>
+              <p>Ad Campaigns &amp; Optimization</p>
+            </div>
+            <div class="flip-card-back">
+              <h4>Week 4: Ad Optimization</h4>
+              <ul>
+                <li><strong>Paid Ads:</strong> Use AI for efficiency</li>
+                <li><strong>Dynamic Targeting:</strong> AI-driven segmentation</li>
+                <li><strong>Optimization:</strong> Real-time adjustments</li>
+                <li><strong>Practical:</strong> Set up campaigns with Expedify</li>
+                <li><strong>Project:</strong> Execute an ad campaign</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <h3 style="text-align: center; margin: 2rem 0 1rem;">Month 2</h3>
+      <div class="curriculum-grid">
+        <!-- Week 5 Card -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Week 5</h4>
+              <p>Customer Data &amp; Personalization</p>
+            </div>
+            <div class="flip-card-back">
+              <h4>Week 5: Customer Personalization</h4>
+              <ul>
+                <li><strong>Omnichannel Marketing:</strong> Manage campaigns across platforms</li>
+                <li><strong>Segmentation:</strong> Gain audience insights</li>
+                <li><strong>Journey Mapping:</strong> Personalize automation</li>
+                <li><strong>Sales Funnel:</strong> Optimize with AI</li>
+                <li><strong>Practical:</strong> Automate retargeting using Expedify</li>
+                <li><strong>Project:</strong> Develop a customer engagement strategy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Week 6 Card -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Week 6</h4>
+              <p>Predictive Analytics &amp; Decision-Making</p>
+            </div>
+            <div class="flip-card-back">
+              <h4>Week 6: Predictive Analytics</h4>
+              <ul>
+                <li><strong>Conversion Optimization:</strong> AI-driven decisions</li>
+                <li><strong>Budget Allocation:</strong> Optimize spend with AI</li>
+                <li><strong>Forecasting:</strong> Campaign forecasting &amp; attribution</li>
+                <li><strong>Practical:</strong> Use Expedify’s dashboard</li>
+                <li><strong>Project:</strong> Develop a predictive campaign</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Week 7 Card -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Week 7</h4>
+              <p>Shopify Marketing</p>
+            </div>
+            <div class="flip-card-back">
+              <h4>Week 7: Shopify Marketing</h4>
+              <ul>
+                <li><strong>E-Commerce Growth:</strong> Leverage AI for online sales</li>
+                <li><strong>Shopify Integration:</strong> Expedify’s sales funnels</li>
+                <li><strong>Retention:</strong> Enhance customer retention</li>
+                <li><strong>Practical:</strong> Execute e-commerce campaigns</li>
+                <li><strong>Project:</strong> Run an AI-powered e-commerce campaign</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Week 8 Card -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Week 8</h4>
+              <p>Capstone &amp; Certification</p>
+            </div>
+            <div class="flip-card-back">
+              <h4>Week 8: Capstone &amp; Certification</h4>
+              <ul>
+                <li><strong>Case Studies:</strong> Real-world AI strategies</li>
+                <li><strong>Capstone Project:</strong> Solve marketing challenges</li>
+                <li><strong>Career Support:</strong> Portfolio &amp; placement assistance</li>
+                <li><strong>Project:</strong> Develop a full-scale omnichannel strategy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section (New UI with Cards) -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects Across Different Streams</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h4>AI-Driven Content Plan</h4>
+          <p>Develop a comprehensive content plan for a brand campaign using AI insights.</p>
+        </div>
+        <div class="project-card">
+          <h4>Content &amp; Email Automation</h4>
+          <p>Create an AI-powered strategy to automate content distribution and email campaigns.</p>
+        </div>
+        <div class="project-card">
+          <h4>Chatbot &amp; Automation Workflow</h4>
+          <p>Develop an AI-driven chatbot and marketing automation workflow in Expedify.</p>
+        </div>
+        <div class="project-card">
+          <h4>Data-Driven Ad Campaign</h4>
+          <p>Execute an advertising campaign optimized by AI analytics for maximum ROI.</p>
+        </div>
+        <div class="project-card">
+          <h4>Customer Engagement Strategy</h4>
+          <p>Design a strategy to enhance customer engagement and retargeting using data insights.</p>
+        </div>
+        <div class="project-card">
+          <h4>Predictive Marketing Campaign</h4>
+          <p>Build a campaign leveraging predictive analytics to optimize real-time performance.</p>
+        </div>
+        <div class="project-card">
+          <h4>E-Commerce Campaign</h4>
+          <p>Execute an AI-powered marketing campaign to boost Shopify and e-commerce growth.</p>
+        </div>
+        <div class="project-card">
+          <h4>Omnichannel Capstone</h4>
+          <p>Create a comprehensive AI-driven omnichannel marketing strategy as the capstone project.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Summary Section -->
+  <section id="summary">
+    <div class="container">
+      <h2 class="section-title">Course Summary</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Week</th>
+            <th>Module</th>
+            <th>Skill Developed</th>
+            <th>Key Learnings</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Week 1</td>
+            <td>Foundations of AI in Marketing</td>
+            <td>AI Fundamentals &amp; Strategy</td>
+            <td>AI evolution, Generative AI vs. Agentic AI, Ethics &amp; Bias, AI in Performance Marketing</td>
+          </tr>
+          <tr>
+            <td>Week 2</td>
+            <td>AI-Powered Content &amp; Campaign Automation</td>
+            <td>AI in Content &amp; SEO</td>
+            <td>Automated content creation for blogs, social media, ads; SEO &amp; performance tracking</td>
+          </tr>
+          <tr>
+            <td>Week 3</td>
+            <td>No-Code Agentic AI &amp; Marketing Automation</td>
+            <td>AI Chatbots &amp; Workflow Automation</td>
+            <td>Automating workflows, building chatbots, AI-powered retargeting &amp; lead nurturing</td>
+          </tr>
+          <tr>
+            <td>Week 4</td>
+            <td>AI in Ad Campaigns &amp; Performance Optimization</td>
+            <td>AI in Paid Media &amp; Optimization</td>
+            <td>Targeting, budget allocation, A/B testing, real-time campaign tracking</td>
+          </tr>
+          <tr>
+            <td>Week 5</td>
+            <td>Martech AI &amp; Customer Personalization</td>
+            <td>AI in Customer Journey &amp; Retargeting</td>
+            <td>Customer segmentation, omnichannel engagement, CRM workflows</td>
+          </tr>
+          <tr>
+            <td>Week 6</td>
+            <td>Predictive Analytics &amp; AI-Driven Decision-Making</td>
+            <td>Marketing Analytics &amp; ROI Tracking</td>
+            <td>Attribution modeling, predictive analytics, performance monitoring</td>
+          </tr>
+          <tr>
+            <td>Week 7</td>
+            <td>AI for E-Commerce &amp; Shopify Marketing</td>
+            <td>Performance E-Commerce &amp; Automation</td>
+            <td>Shopify marketing, product recommendations, lifecycle automation</td>
+          </tr>
+          <tr>
+            <td>Week 8</td>
+            <td>Capstone Project &amp; Certification</td>
+            <td>AI Strategy &amp; Execution</td>
+            <td>Develop &amp; present a full-scale AI-driven marketing strategy</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Tools Section -->
+  <section id="tools">
+    <div class="container">
+      <h2 class="section-title">Tools &amp; Technologies Covered</h2>
+      <div class="grid grid-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/100?text=Expedify+Tool" alt="Expedify AI Tool">
+          <p><strong>Expedify’s AI-Powered Omnichannel Tool</strong></p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/100?text=ChatGPT" alt="ChatGPT">
+          <p><strong>ChatGPT</strong></p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/100?text=Jasper" alt="Jasper">
+          <p><strong>Jasper</strong></p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/100?text=Copy.ai" alt="Copy.ai">
+          <p><strong>Copy.ai</strong></p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/100?text=Zapier" alt="Zapier">
+          <p><strong>Zapier</strong></p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/100?text=Google+AI" alt="Google AI">
+          <p><strong>Google AI</strong></p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/100?text=Meta+AI" alt="Meta AI">
+          <p><strong>Meta AI</strong></p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/100?text=No-Code+AI" alt="No-Code AI Tools">
+          <p><strong>No-Code AI Tools</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing">
+    <div class="container">
+      <h2 class="section-title">Pricing</h2>
+      <div class="pricing-table">
+        <div class="pricing-plan">
+          <h3>Standard Plan</h3>
+          <p class="price">₹35,000</p>
+          <p>Live training, projects, certification</p>
+        </div>
+        <div class="pricing-plan">
+          <h3>Premium Plan</h3>
+          <p class="price">₹55,000</p>
+          <p>Includes 1-on-1 mentorship &amp; placement assistance</p>
+        </div>
+        <div class="pricing-plan">
+          <h3>Early Bird Offer</h3>
+          <p class="price">₹25,000</p>
+          <p>Limited seats, full course access at a discount</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admission Process Timeline Section -->
+  <section id="admission-timeline">
+    <div class="container">
+      <h2 class="section-title">Admission Process</h2>
+      <div class="timeline">
+        <!-- Timeline Item 1 (Right) -->
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h3>Application</h3>
+            <p>Submit your online form with your background, experience, and goals.</p>
+          </div>
+        </div>
+        <!-- Timeline Item 2 (Left) -->
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3>Assessment</h3>
+            <p>Take the basic marketing qualification round to ensure foundational knowledge.</p>
+          </div>
+        </div>
+        <!-- Timeline Item 3 (Right) -->
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h3>Enrollment</h3>
+            <p>Selected candidates receive an offer and onboarding details.</p>
+          </div>
+        </div>
+        <!-- Timeline Item 4 (Left) -->
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3>Pre-Work</h3>
+            <p>Access pre-learning resources before the live sessions begin.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Refund & Deferral Policy Section -->
+  <section id="refund">
+    <div class="container">
+      <h2 class="section-title">Refund &amp; Deferral Policy</h2>
+      <div class="policy-grid">
+        <div class="policy-card">
+          <h3>Full Refund</h3>
+          <p>Before course start (minus processing fee)</p>
+        </div>
+        <div class="policy-card">
+          <h3>50% Refund</h3>
+          <p>If withdrawn within first 7 days</p>
+        </div>
+        <div class="policy-card">
+          <h3>No Refund</h3>
+          <p>After 7 days (deferral option available)</p>
+        </div>
+      </div>
+      <div class="policy-grid">
+        <div class="policy-card">
+          <h3>Deferral</h3>
+          <p>Transfer to future batch within 6 months</p>
+        </div>
+        <div class="policy-card">
+          <h3>Transfer</h3>
+          <p>One-time seat transfer to another participant</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs Section -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section-title">FAQs</h2>
+      <div class="accordion-item">
+        <div class="accordion-header">1. Who is this course for?</div>
+        <div class="accordion-content">
+          <p>This course is designed for marketers, growth strategists, performance marketers, business owners, and AI enthusiasts who want to leverage AI for content creation, automation, and performance marketing execution.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">2. Do I need prior experience in AI or coding?</div>
+        <div class="accordion-content">
+          <p>No. While technical coding isn’t required, basic marketing knowledge is essential.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">3. How is this course different from other marketing programs?</div>
+        <div class="accordion-content">
+          <p>This is a 100% hands-on, AI-first, project-driven program with live training, exclusive tool access, and robust career support—unlike theory-based courses.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">4. What tools will I learn?</div>
+        <div class="accordion-content">
+          <p>You will gain hands-on experience with Expedify’s AI tool, ChatGPT, Jasper, Copy.ai, Zapier, Google AI, Meta AI, and other no-code AI automation tools.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">5. What is the admission process?</div>
+        <div class="accordion-content">
+          <p>Submit your application, take the qualifying marketing assessment, and if selected, you’ll receive an enrollment offer and pre-work materials.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">6. Can I pay in installments?</div>
+        <div class="accordion-content">
+          <p>Yes, flexible installment plans are available. Contact our admissions team for details.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">7. Will I receive a certification?</div>
+        <div class="accordion-content">
+          <p>Yes, upon successful completion you will receive an industry-recognized Expedify AI in Marketing Certification.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">8. What if I need to defer my enrollment?</div>
+        <div class="accordion-content">
+          <p>You can defer your enrollment to a future batch (within 6 months) at no extra cost or transfer your seat to an eligible candidate.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA (Apply) Section -->
+  <section id="final-cta">
+    <div class="container">
+      <h2 class="section-title">Join the AI Marketing Revolution</h2>
+      <p style="text-align: center; max-width:600px; margin:0 auto 30px;">
+        Seats are limited. Apply now and future-proof your marketing career with AI.
+      </p>
+      <div class="cta-form">
+        <form>
+          <input type="text" placeholder="Name" required />
+          <input type="email" placeholder="Email" required />
+          <input type="tel" placeholder="Phone" required />
+          <input type="url" placeholder="LinkedIn Profile (optional)" />
+          <button type="submit">Apply Now</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Curriculum Section (Flip Cards) -->
+  <section id="detailed-curriculum">
+    <div class="container">
+      <h2 class="section-title">Detailed Curriculum</h2>
+      <h3 style="text-align: center; margin-bottom: 1rem;">Month 1</h3>
+      <div class="curriculum-grid">
+        <!-- Week 1 Card -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Week 1</h4>
+              <p>Foundations of AI in Marketing</p>
+            </div>
+            <div class="flip-card-back">
+              <h4>Week 1: Foundations of AI</h4>
+              <ul>
+                <li><strong>Introduction:</strong> Evolution, trends, and applications</li>
+                <li><strong>Generative vs. Agentic:</strong> Capabilities &amp; limitations</li>
+                <li><strong>Ethics:</strong> Addressing bias &amp; data privacy</li>
+                <li><strong>Performance:</strong> How AI optimizes ROI</li>
+                <li><strong>Practical:</strong> Explore Expedify’s tools</li>
+                <li><strong>Project:</strong> Develop a content plan</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Week 2 Card -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Week 2</h4>
+              <p>Content &amp; Campaign Automation</p>
+            </div>
+            <div class="flip-card-back">
+              <h4>Week 2: Automation</h4>
+              <ul>
+                <li><strong>Social Media &amp; Blogs:</strong> Automate content creation</li>
+                <li><strong>Campaign Management:</strong> Scheduling &amp; engagement</li>
+                <li><strong>SEO &amp; Tracking:</strong> Enhance performance</li>
+                <li><strong>Email Campaigns:</strong> Automate engagement</li>
+                <li><strong>Practical:</strong> Implement AI workflows</li>
+                <li><strong>Project:</strong> Create an email strategy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Week 3 Card -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Week 3</h4>
+              <p>No-Code AI &amp; Automation</p>
+            </div>
+            <div class="flip-card-back">
+              <h4>Week 3: No-Code Automation</h4>
+              <ul>
+                <li><strong>Agentic AI:</strong> Autonomous workflows</li>
+                <li><strong>No-Code Workflows:</strong> Automate tasks</li>
+                <li><strong>Chatbots:</strong> Build AI-powered bots</li>
+                <li><strong>Customer Journeys:</strong> Personalize engagement</li>
+                <li><strong>Practical:</strong> Use Expedify’s chatbot integration</li>
+                <li><strong>Project:</strong> Develop a chatbot workflow</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Week 4 Card -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Week 4</h4>
+              <p>Ad Campaigns &amp; Optimization</p>
+            </div>
+            <div class="flip-card-back">
+              <h4>Week 4: Ad Optimization</h4>
+              <ul>
+                <li><strong>Paid Ads:</strong> Use AI for efficiency</li>
+                <li><strong>Dynamic Targeting:</strong> AI-driven segmentation</li>
+                <li><strong>Optimization:</strong> Real-time adjustments</li>
+                <li><strong>Practical:</strong> Set up campaigns with Expedify</li>
+                <li><strong>Project:</strong> Execute an ad campaign</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <h3 style="text-align: center; margin: 2rem 0 1rem;">Month 2</h3>
+      <div class="curriculum-grid">
+        <!-- Week 5 Card -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Week 5</h4>
+              <p>Customer Data &amp; Personalization</p>
+            </div>
+            <div class="flip-card-back">
+              <h4>Week 5: Customer Personalization</h4>
+              <ul>
+                <li><strong>Omnichannel Marketing:</strong> Manage campaigns across platforms</li>
+                <li><strong>Segmentation:</strong> Gain audience insights</li>
+                <li><strong>Journey Mapping:</strong> Personalize automation</li>
+                <li><strong>Sales Funnel:</strong> Optimize with AI</li>
+                <li><strong>Practical:</strong> Automate retargeting using Expedify</li>
+                <li><strong>Project:</strong> Develop a customer engagement strategy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Week 6 Card -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Week 6</h4>
+              <p>Predictive Analytics &amp; Decision-Making</p>
+            </div>
+            <div class="flip-card-back">
+              <h4>Week 6: Predictive Analytics</h4>
+              <ul>
+                <li><strong>Conversion Optimization:</strong> AI-driven decisions</li>
+                <li><strong>Budget Allocation:</strong> Optimize spend with AI</li>
+                <li><strong>Forecasting:</strong> Campaign forecasting &amp; attribution</li>
+                <li><strong>Practical:</strong> Use Expedify’s dashboard</li>
+                <li><strong>Project:</strong> Develop a predictive campaign</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Week 7 Card -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Week 7</h4>
+              <p>Shopify Marketing</p>
+            </div>
+            <div class="flip-card-back">
+              <h4>Week 7: Shopify Marketing</h4>
+              <ul>
+                <li><strong>E-Commerce Growth:</strong> Leverage AI for online sales</li>
+                <li><strong>Shopify Integration:</strong> Expedify’s sales funnels</li>
+                <li><strong>Retention:</strong> Enhance customer retention</li>
+                <li><strong>Practical:</strong> Execute e-commerce campaigns</li>
+                <li><strong>Project:</strong> Run an AI-powered e-commerce campaign</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Week 8 Card -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Week 8</h4>
+              <p>Capstone &amp; Certification</p>
+            </div>
+            <div class="flip-card-back">
+              <h4>Week 8: Capstone &amp; Certification</h4>
+              <ul>
+                <li><strong>Case Studies:</strong> Real-world AI strategies</li>
+                <li><strong>Capstone Project:</strong> Solve marketing challenges</li>
+                <li><strong>Career Support:</strong> Portfolio &amp; placement assistance</li>
+                <li><strong>Project:</strong> Develop a full-scale omnichannel strategy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section (New UI with Cards) -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects Across Different Streams</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h4>AI-Driven Content Plan</h4>
+          <p>Develop a comprehensive content plan for a brand campaign using AI insights.</p>
+        </div>
+        <div class="project-card">
+          <h4>Content &amp; Email Automation</h4>
+          <p>Create an AI-powered strategy to automate content distribution and email campaigns.</p>
+        </div>
+        <div class="project-card">
+          <h4>Chatbot &amp; Automation Workflow</h4>
+          <p>Develop an AI-driven chatbot and marketing automation workflow in Expedify.</p>
+        </div>
+        <div class="project-card">
+          <h4>Data-Driven Ad Campaign</h4>
+          <p>Execute an advertising campaign optimized by AI analytics for maximum ROI.</p>
+        </div>
+        <div class="project-card">
+          <h4>Customer Engagement Strategy</h4>
+          <p>Design a strategy to enhance customer engagement and retargeting using data insights.</p>
+        </div>
+        <div class="project-card">
+          <h4>Predictive Marketing Campaign</h4>
+          <p>Build a campaign leveraging predictive analytics to optimize real-time performance.</p>
+        </div>
+        <div class="project-card">
+          <h4>E-Commerce Campaign</h4>
+          <p>Execute an AI-powered marketing campaign to boost Shopify and e-commerce growth.</p>
+        </div>
+        <div class="project-card">
+          <h4>Omnichannel Capstone</h4>
+          <p>Create a comprehensive AI-driven omnichannel marketing strategy as the capstone project.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Course Summary Section -->
+  <section id="summary">
+    <div class="container">
+      <h2 class="section-title">Course Summary</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Week</th>
+            <th>Module</th>
+            <th>Skill Developed</th>
+            <th>Key Learnings</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Week 1</td>
+            <td>Foundations of AI in Marketing</td>
+            <td>AI Fundamentals &amp; Strategy</td>
+            <td>AI evolution, Generative AI vs. Agentic AI, Ethics &amp; Bias, AI in Performance Marketing</td>
+          </tr>
+          <tr>
+            <td>Week 2</td>
+            <td>AI-Powered Content &amp; Campaign Automation</td>
+            <td>AI in Content &amp; SEO</td>
+            <td>Automated content creation for blogs, social media, ads; SEO &amp; performance tracking</td>
+          </tr>
+          <tr>
+            <td>Week 3</td>
+            <td>No-Code Agentic AI &amp; Marketing Automation</td>
+            <td>AI Chatbots &amp; Workflow Automation</td>
+            <td>Automating workflows, building chatbots, AI-powered retargeting &amp; lead nurturing</td>
+          </tr>
+          <tr>
+            <td>Week 4</td>
+            <td>AI in Ad Campaigns &amp; Performance Optimization</td>
+            <td>AI in Paid Media &amp; Optimization</td>
+            <td>Targeting, budget allocation, A/B testing, real-time campaign tracking</td>
+          </tr>
+          <tr>
+            <td>Week 5</td>
+            <td>Martech AI &amp; Customer Personalization</td>
+            <td>AI in Customer Journey &amp; Retargeting</td>
+            <td>Customer segmentation, omnichannel engagement, CRM workflows</td>
+          </tr>
+          <tr>
+            <td>Week 6</td>
+            <td>Predictive Analytics &amp; AI-Driven Decision-Making</td>
+            <td>Marketing Analytics &amp; ROI Tracking</td>
+            <td>Attribution modeling, predictive analytics, performance monitoring</td>
+          </tr>
+          <tr>
+            <td>Week 7</td>
+            <td>AI for E-Commerce &amp; Shopify Marketing</td>
+            <td>Performance E-Commerce &amp; Automation</td>
+            <td>Shopify marketing, product recommendations, lifecycle automation</td>
+          </tr>
+          <tr>
+            <td>Week 8</td>
+            <td>Capstone Project &amp; Certification</td>
+            <td>AI Strategy &amp; Execution</td>
+            <td>Develop &amp; present a full-scale AI-driven marketing strategy</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Tools Section -->
+  <section id="tools">
+    <div class="container">
+      <h2 class="section-title">Tools &amp; Technologies Covered</h2>
+      <div class="grid grid-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/100?text=Expedify+Tool" alt="Expedify AI Tool">
+          <p><strong>Expedify’s AI-Powered Omnichannel Tool</strong></p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/100?text=ChatGPT" alt="ChatGPT">
+          <p><strong>ChatGPT</strong></p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/100?text=Jasper" alt="Jasper">
+          <p><strong>Jasper</strong></p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/100?text=Copy.ai" alt="Copy.ai">
+          <p><strong>Copy.ai</strong></p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/100?text=Zapier" alt="Zapier">
+          <p><strong>Zapier</strong></p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/100?text=Google+AI" alt="Google AI">
+          <p><strong>Google AI</strong></p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/100?text=Meta+AI" alt="Meta AI">
+          <p><strong>Meta AI</strong></p>
+        </div>
+        <div class="card">
+          <img src="https://via.placeholder.com/100?text=No-Code+AI" alt="No-Code AI Tools">
+          <p><strong>No-Code AI Tools</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing">
+    <div class="container">
+      <h2 class="section-title">Pricing</h2>
+      <div class="pricing-table">
+        <div class="pricing-plan">
+          <h3>Standard Plan</h3>
+          <p class="price">₹35,000</p>
+          <p>Live training, projects, certification</p>
+        </div>
+        <div class="pricing-plan">
+          <h3>Premium Plan</h3>
+          <p class="price">₹55,000</p>
+          <p>Includes 1-on-1 mentorship &amp; placement assistance</p>
+        </div>
+        <div class="pricing-plan">
+          <h3>Early Bird Offer</h3>
+          <p class="price">₹25,000</p>
+          <p>Limited seats, full course access at a discount</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admission Process Timeline Section -->
+  <section id="admission-timeline">
+    <div class="container">
+      <h2 class="section-title">Admission Process</h2>
+      <div class="timeline">
+        <!-- Timeline Item 1 (Right) -->
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h3>Application</h3>
+            <p>Submit your online form with your background, experience, and goals.</p>
+          </div>
+        </div>
+        <!-- Timeline Item 2 (Left) -->
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3>Assessment</h3>
+            <p>Take the basic marketing qualification round to ensure foundational knowledge.</p>
+          </div>
+        </div>
+        <!-- Timeline Item 3 (Right) -->
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h3>Enrollment</h3>
+            <p>Selected candidates receive an offer and onboarding details.</p>
+          </div>
+        </div>
+        <!-- Timeline Item 4 (Left) -->
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h3>Pre-Work</h3>
+            <p>Access pre-learning resources before the live sessions begin.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Refund & Deferral Policy Section -->
+  <section id="refund">
+    <div class="container">
+      <h2 class="section-title">Refund &amp; Deferral Policy</h2>
+      <div class="policy-grid">
+        <div class="policy-card">
+          <h3>Full Refund</h3>
+          <p>Before course start (minus processing fee)</p>
+        </div>
+        <div class="policy-card">
+          <h3>50% Refund</h3>
+          <p>If withdrawn within first 7 days</p>
+        </div>
+        <div class="policy-card">
+          <h3>No Refund</h3>
+          <p>After 7 days (deferral option available)</p>
+        </div>
+      </div>
+      <div class="policy-grid">
+        <div class="policy-card">
+          <h3>Deferral</h3>
+          <p>Transfer to future batch within 6 months</p>
+        </div>
+        <div class="policy-card">
+          <h3>Transfer</h3>
+          <p>One-time seat transfer to another participant</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs Section -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section-title">FAQs</h2>
+      <div class="accordion-item">
+        <div class="accordion-header">1. Who is this course for?</div>
+        <div class="accordion-content">
+          <p>This course is designed for marketers, growth strategists, performance marketers, business owners, and AI enthusiasts who want to leverage AI for content creation, automation, and performance marketing execution.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">2. Do I need prior experience in AI or coding?</div>
+        <div class="accordion-content">
+          <p>No. While technical coding isn’t required, basic marketing knowledge is essential.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">3. How is this course different from other marketing programs?</div>
+        <div class="accordion-content">
+          <p>This is a 100% hands-on, AI-first, project-driven program with live training, exclusive tool access, and robust career support—unlike theory-based courses.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">4. What tools will I learn?</div>
+        <div class="accordion-content">
+          <p>You will gain hands-on experience with Expedify’s AI tool, ChatGPT, Jasper, Copy.ai, Zapier, Google AI, Meta AI, and other no-code AI automation tools.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">5. What is the admission process?</div>
+        <div class="accordion-content">
+          <p>Submit your application, take the qualifying marketing assessment, and if selected, you’ll receive an enrollment offer and pre-work materials.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">6. Can I pay in installments?</div>
+        <div class="accordion-content">
+          <p>Yes, flexible installment plans are available. Contact our admissions team for details.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">7. Will I receive a certification?</div>
+        <div class="accordion-content">
+          <p>Yes, upon successful completion you will receive an industry-recognized Expedify AI in Marketing Certification.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <div class="accordion-header">8. What if I need to defer my enrollment?</div>
+        <div class="accordion-content">
+          <p>You can defer your enrollment to a future batch (within 6 months) at no extra cost or transfer your seat to an eligible candidate.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA (Apply) Section -->
+  <section id="final-cta">
+    <div class="container">
+      <h2 class="section-title">Join the AI Marketing Revolution</h2>
+      <p style="text-align: center; max-width:600px; margin:0 auto 30px;">
+        Seats are limited. Apply now and future-proof your marketing career with AI.
+      </p>
+      <div class="cta-form">
+        <form>
+          <input type="text" placeholder="Name" required />
+          <input type="email" placeholder="Email" required />
+          <input type="tel" placeholder="Phone" required />
+          <input type="url" placeholder="LinkedIn Profile (optional)" />
+          <button type="submit">Apply Now</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Responsive adjustments for flip cards on small screens -->
+  <style>
+    @media (max-width: 600px) {
+      .flip-card {
+        max-width: 100%;
+        height: 300px;
+      }
+    }
+  </style>
+
+  <!-- JavaScript -->
+  <script>
+    // Accordion functionality for Detailed Curriculum and FAQs
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    accordionHeaders.forEach(header => {
+      header.addEventListener('click', function() {
+        this.parentElement.classList.toggle('active');
+      });
+    });
+
+    // Intersection Observer for timeline animation in Admission Process Timeline
+    const timelineItems = document.querySelectorAll('#admission-timeline .timeline-item');
+    const observerOptions = {
+      threshold: 0.2
+    };
+    const timelineObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    timelineItems.forEach(item => {
+      timelineObserver.observe(item);
+    });
+
+    // Chat widget toggle functionality
+    document.getElementById("chatWidget").addEventListener("click", function() {
+      document.getElementById("chatPopup").classList.toggle("active");
+    });
+    document.getElementById("closeChat").addEventListener("click", function() {
+      document.getElementById("chatPopup").classList.remove("active");
+    });
+  </script>
+</body>
+</html>
